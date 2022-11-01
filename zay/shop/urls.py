@@ -6,4 +6,8 @@ from django.conf.urls import handler404
 
 urlpatterns = [
     path('', index),
+    path('about/', about, name='about'),
 ]
+
+handler404 = 'shop.views.error404'
+
