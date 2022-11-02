@@ -24,4 +24,4 @@ urlpatterns = [
     path('', include('shop.urls')),
 ]
 
-# handler404 = 'shop.views.error404'
+handler404 = 'shop.views.error404'
