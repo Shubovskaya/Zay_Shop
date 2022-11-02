@@ -1,6 +1,6 @@
 from django.urls import path, register_converter, re_path
 
-from .views import index
+from .views import index, about
 from django.conf.urls import handler404
 
 
