@@ -5,21 +5,15 @@
 
 {% block content %}
 {% block banner_hero%}
-{% include 'shop/banner_hero.html' %}
+{% include 'shop/index_banner_hero.html' %}
 {% endblock %}
 
-{% block categories%}
-{% include 'shop/index_categories.html' %}
+{% block category%}
+{% include 'shop/index_category.html' %}
 {% endblock %}
 
-
-{% block products%}
-{% include 'shop/index_products.html' %}
-{% endblock %}
-
-
-{% block contacts%}
-{% include 'shop/contacts.html' %}
+{% block product%}
+{% include 'shop/index_product.html' %}
 {% endblock %}
 
 {% endblock %}
