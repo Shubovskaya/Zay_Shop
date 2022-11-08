@@ -3,6 +3,7 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.timezone import now
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -58,6 +59,16 @@ class SubCategory(models.Model):
         default=False,
         verbose_name='публикация'
     )
+
+    slug = models.SlugField(
+        verbose_name='URL',
+        unique=True,
+        null=True,
+        blank=True
+    )
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_slug': self.slug})
 
     def __str__(self):
         return self.name
@@ -196,6 +207,20 @@ class OrderItem(models.Model):
         verbose_name = 'состав заказа'
         verbose_name_plural = 'состав заказов'
         ordering = ('order', 'product')
+
+
+class Basket(models.Model):
+    customer = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True
+    )
+    created_date = models.DateField(
+        auto_now_add=True
+    )
+    updated_date = models.DateField(
+        auto_now=True
+    )
 
 
 class Contact(models.Model):

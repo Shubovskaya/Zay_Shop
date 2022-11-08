@@ -1,12 +1,10 @@
-import contacts as contacts
-from django.urls import path, register_converter, re_path
+from django.urls import path
 
-from .views import IndexView, about, CatalogListView
-from django.conf.urls import handler404
-
+from .views import IndexView, AboutTemplateView, CatalogListView, CategoryListView
 
 urlpatterns = [
-    path('', IndexView.as_view()),
-    path('about/', about, name='about'),
-    path('shop', CatalogListView.as_view(), name='shop'),
+    path('', IndexView.as_view(), name='index'),
+    path('about/', AboutTemplateView.as_view(), name='about'),
+    path('shop/', CatalogListView.as_view(), name='shop'),
+    path('shop/<slug:category_slug>', CategoryListView.as_view(), name='category'),
 ]
